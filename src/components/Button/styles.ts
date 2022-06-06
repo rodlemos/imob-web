@@ -13,4 +13,9 @@ export const Container = styled.button<ButtonProps>`
   border: transparent;
   border-radius: 60px;
   color: white;
+  transition: 0.3s;
+
+  &:hover {
+    filter: brightness(110%);
+  }
 `;

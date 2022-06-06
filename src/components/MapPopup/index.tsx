@@ -1,6 +1,15 @@
+import { IoArrowRedoOutline } from 'react-icons/io5';
+import { useTheme } from 'styled-components';
+import { getAttributeIcon } from '../../util/attributeIcons';
+import { data } from '../../util/data';
+import { Attribute } from '../Attribute';
+import { Button } from '../Button';
 import { Container } from './styles';
 
 export function MapPopup() {
+  const { attributes } = data;
+  const { colors } = useTheme();
+
   return (
     <Container>
       <h2>Two-story house</h2>
@@ -12,16 +21,28 @@ export function MapPopup() {
 
       <div>
         <header>
-          <h3>$1.600.000</h3>
           <span>Sell/Rent</span>
+          <h3>$1.600.000</h3>
         </header>
 
         <div className="attributes-wrapper">
-          <h1>o</h1>
+          {attributes.map((attribute) => (
+            <Attribute
+              key={attribute.id}
+              icon={getAttributeIcon(attribute.type)}
+              title={attribute.title}
+              value={attribute.value}
+            />
+          ))}
         </div>
 
         <footer>
-          <h3>See more</h3>
+          <Button
+            color={colors.green_300}
+            icon={<IoArrowRedoOutline size={20} />}
+          >
+            View more
+          </Button>
         </footer>
       </div>
     </Container>

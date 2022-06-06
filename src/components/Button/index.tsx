@@ -3,7 +3,7 @@ import { IconBaseProps } from 'react-icons';
 import { Container } from './styles';
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   color?: string;
   icon?: ReactElement<IconBaseProps>;
 }

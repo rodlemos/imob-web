@@ -99,8 +99,6 @@ export function Menu() {
   return (
     <Container>
       <button type="button">{icons.favorite}</button>
-      <button type="button">{icons.filter}</button>
-      <button type="button">{icons.search}</button>
     </Container>
   );
 }

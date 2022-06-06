@@ -51,4 +51,30 @@ export const data = {
       name: 'Roberta',
     },
   ],
+  attributes: [
+    {
+      id: 1,
+      type: 'area',
+      title: 'Area',
+      value: '300m²',
+    },
+    {
+      id: 2,
+      type: 'rooms',
+      title: 'Rooms',
+      value: '3',
+    },
+    {
+      id: 3,
+      type: 'bathrooms',
+      title: 'Bathrooms',
+      value: '4',
+    },
+    {
+      id: 4,
+      type: 'garage',
+      title: 'Garage',
+      value: 'no',
+    },
+  ],
 };

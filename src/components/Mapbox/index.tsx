@@ -3,14 +3,21 @@ import Map, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import { MapMarker } from '../MapMarker';
 import { MapPopup } from '../MapPopup';
 
-export function Mapbox() {
+interface MapboxProps {
+  coord: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
+export function Mapbox({ coord }: MapboxProps) {
   const [showPopup, setShowPopup] = useState(false);
 
-  return (
+  return coord.latitude ? (
     <Map
       initialViewState={{
-        longitude: -53.8122900851903,
-        latitude: -29.69013553138882,
+        longitude: coord.longitude,
+        latitude: coord.latitude,
         zoom: 14,
       }}
       style={{ flex: 1 }}
@@ -18,7 +25,7 @@ export function Mapbox() {
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       attributionControl={false}
     >
-      <NavigationControl />
+      <NavigationControl position="bottom-right" />
       <Marker
         latitude={-29.690247375056195}
         longitude={-53.82353390526631}
@@ -35,10 +42,15 @@ export function Mapbox() {
           onClose={() => setShowPopup(false)}
           closeOnClick={false}
           offset={4}
+          maxWidth="280px"
         >
           <MapPopup />
         </Popup>
       )}
     </Map>
+  ) : (
+    <div>
+      <h1>Loading...</h1>
+    </div>
   );
 }
